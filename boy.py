@@ -13,7 +13,8 @@ class Idle:
         pass
 
     def do(self):
-        pass
+        if get_time() - self.boy.idle_start_time > 5:
+            self.boy.time_out()
 
     def draw(self):
         boy = self.boy
@@ -65,8 +66,8 @@ class Boy:
 
     def update(self):
         self.frame = (self.frame + 1) % 8
-        if self.state == 'IDLE' and get_time() - self.idle_start_time > 5:
-            self.time_out()
+        if self.state == 'IDLE':
+            self.idle_state.do()
         elif self.state == 'RUN':
             self.x = clamp(25, self.x + self.dir * 5, 800 - 25)
 
