@@ -96,11 +96,13 @@ class Boy:
             'SLEEP': self.sleep_state,
             'RUN': self.run_state,
         }
-        self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
+        # 상태 전이 시 상태 객체의 enter/exit 이 자동으로 호출되도록 연결
+        states = [{'name': name,
+                   'on_enter': self.state_objects[name].enter,
+                   'on_exit': self.state_objects[name].exit} for name in Boy.states]
+        self.machine = Machine(model=self, states=states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
-        self.idle_state.enter()
-
-    def on_enter_IDLE(self):
+        # 초기 상태는 on_enter 가 호출되지 않으므로 직접 호출
         self.idle_state.enter()
 
     def handle_event(self, event):
