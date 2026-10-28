@@ -63,7 +63,11 @@ class Run:
         boy.x = clamp(25, boy.x + boy.dir * 5, 800 - 25)
 
     def draw(self):
-        pass
+        boy = self.boy
+        if boy.face_dir == 1:
+            boy.image.clip_draw(boy.frame * 100, 100, 100, 100, boy.x, boy.y)
+        else:
+            boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, boy.y)
 
 
 class Boy:
@@ -121,7 +125,4 @@ class Boy:
         elif self.state == 'SLEEP':
             self.sleep_state.draw()
         elif self.state == 'RUN':
-            if self.face_dir == 1:
-                self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
-            else:
-                self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+            self.run_state.draw()
