@@ -119,6 +119,7 @@ class Boy:
         {'trigger': 'run', 'source': ['IDLE', 'SLEEP'], 'dest': 'RUN'},
         {'trigger': 'stop', 'source': 'RUN', 'dest': 'IDLE'},
         {'trigger': 'a_down', 'source': 'IDLE', 'dest': 'AUTO_RUN'},
+        {'trigger': 'time_out', 'source': 'AUTO_RUN', 'dest': 'IDLE'},
     ]
 
     def __init__(self):
