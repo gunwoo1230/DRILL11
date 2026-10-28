@@ -48,6 +48,23 @@ class Sleep:
                                           -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
 
 
+class Run:
+    def __init__(self, boy):
+        self.boy = boy
+
+    def enter(self):
+        pass
+
+    def exit(self):
+        pass
+
+    def do(self):
+        pass
+
+    def draw(self):
+        pass
+
+
 class Boy:
     states = ['IDLE', 'SLEEP', 'RUN']
     transitions = [
@@ -66,6 +83,7 @@ class Boy:
         self.image = load_image('animation_sheet.png')
         self.idle_state = Idle(self)
         self.sleep_state = Sleep(self)
+        self.run_state = Run(self)
         self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
         self.idle_state.enter()
