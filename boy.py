@@ -83,6 +83,7 @@ class AutoRun:
     def enter(self):
         # 바라보는 방향으로 자동 이동 시작
         self.boy.dir = self.boy.face_dir
+        self.start_time = get_time()
 
     def exit(self):
         pass
