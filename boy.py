@@ -2,6 +2,23 @@ from pico2d import load_image, get_time, clamp, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPA
 from transitions import Machine
 
 
+class Idle:
+    def __init__(self, boy):
+        self.boy = boy
+
+    def enter(self):
+        pass
+
+    def exit(self):
+        pass
+
+    def do(self):
+        pass
+
+    def draw(self):
+        pass
+
+
 class Boy:
     states = ['IDLE', 'SLEEP', 'RUN']
     transitions = [
