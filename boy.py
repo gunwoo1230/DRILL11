@@ -1,6 +1,9 @@
 from pico2d import load_image, get_time, clamp, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT, SDLK_a
 from transitions import Machine
 
+RUN_SPEED = 5
+AUTO_RUN_SPEED = 5
+
 
 class Idle:
     def __init__(self, boy):
@@ -62,7 +65,7 @@ class Run:
     def do(self):
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
-        boy.x = clamp(25, boy.x + boy.dir * 5, 800 - 25)
+        boy.x = clamp(25, boy.x + boy.dir * RUN_SPEED, 800 - 25)
 
     def draw(self):
         boy = self.boy
@@ -86,7 +89,7 @@ class AutoRun:
     def do(self):
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
-        boy.x += boy.dir * 5
+        boy.x += boy.dir * AUTO_RUN_SPEED
         if boy.x > 800 - 25:
             boy.x = 800 - 25
             boy.dir = boy.face_dir = -1
