@@ -90,6 +90,9 @@ class AutoRun:
         if boy.x > 800 - 25:
             boy.x = 800 - 25
             boy.dir = -1
+        elif boy.x < 25:
+            boy.x = 25
+            boy.dir = 1
 
     def draw(self):
         boy = self.boy
