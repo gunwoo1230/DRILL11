@@ -84,7 +84,8 @@ class AutoRun:
         pass
 
     def do(self):
-        pass
+        boy = self.boy
+        boy.frame = (boy.frame + 1) % 8
 
     def draw(self):
         boy = self.boy
