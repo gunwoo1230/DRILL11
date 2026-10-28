@@ -119,7 +119,7 @@ class Boy:
     transitions = [
         {'trigger': 'time_out', 'source': 'IDLE', 'dest': 'SLEEP'},
         {'trigger': 'space_down', 'source': 'SLEEP', 'dest': 'IDLE'},
-        {'trigger': 'run', 'source': ['IDLE', 'SLEEP'], 'dest': 'RUN'},
+        {'trigger': 'run', 'source': ['IDLE', 'SLEEP', 'AUTO_RUN'], 'dest': 'RUN'},
         {'trigger': 'stop', 'source': 'RUN', 'dest': 'IDLE'},
         {'trigger': 'a_down', 'source': 'IDLE', 'dest': 'AUTO_RUN'},
         {'trigger': 'time_out', 'source': 'AUTO_RUN', 'dest': 'IDLE'},
