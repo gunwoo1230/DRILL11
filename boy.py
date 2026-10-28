@@ -7,13 +7,13 @@ class Idle:
         self.boy = boy
 
     def enter(self):
-        pass
+        self.start_time = get_time()
 
     def exit(self):
         pass
 
     def do(self):
-        if get_time() - self.boy.idle_start_time > 5:
+        if get_time() - self.start_time > 5:
             self.boy.time_out()
 
     def draw(self):
@@ -43,10 +43,10 @@ class Boy:
         self.idle_state = Idle(self)
         self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
-        self.idle_start_time = get_time()
+        self.idle_state.enter()
 
     def on_enter_IDLE(self):
-        self.idle_start_time = get_time()
+        self.idle_state.enter()
 
     def handle_event(self, event):
         if event.type == SDL_KEYDOWN and event.key == SDLK_SPACE:
