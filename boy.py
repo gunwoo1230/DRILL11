@@ -59,7 +59,8 @@ class Run:
         pass
 
     def do(self):
-        pass
+        boy = self.boy
+        boy.x = clamp(25, boy.x + boy.dir * 5, 800 - 25)
 
     def draw(self):
         pass
@@ -112,7 +113,7 @@ class Boy:
         if self.state == 'IDLE':
             self.idle_state.do()
         elif self.state == 'RUN':
-            self.x = clamp(25, self.x + self.dir * 5, 800 - 25)
+            self.run_state.do()
 
     def draw(self):
         if self.state == 'IDLE':
