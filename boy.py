@@ -86,7 +86,11 @@ class AutoRun:
         pass
 
     def draw(self):
-        pass
+        boy = self.boy
+        if boy.face_dir == 1:
+            boy.image.clip_draw(boy.frame * 100, 100, 100, 100, boy.x, boy.y)
+        else:
+            boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, boy.y)
 
 
 class Boy:
