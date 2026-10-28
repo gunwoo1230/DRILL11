@@ -100,6 +100,8 @@ class AutoRun:
         elif boy.x < margin:
             boy.x = margin
             boy.dir = boy.face_dir = 1
+        if get_time() - self.start_time > 5:
+            boy.time_out()
 
     def draw(self):
         boy = self.boy
