@@ -101,10 +101,12 @@ class AutoRun:
     def draw(self):
         boy = self.boy
         size = 100 * AUTO_RUN_SCALE
+        # 커진 만큼 위로 올려서 발이 땅에 닿도록 함
+        y = boy.y + (size - 100) // 2
         if boy.face_dir == 1:
-            boy.image.clip_draw(boy.frame * 100, 100, 100, 100, boy.x, boy.y, size, size)
+            boy.image.clip_draw(boy.frame * 100, 100, 100, 100, boy.x, y, size, size)
         else:
-            boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, boy.y, size, size)
+            boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, y, size, size)
 
 
 class Boy:
