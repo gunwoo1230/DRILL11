@@ -35,6 +35,7 @@ class Boy:
         self.dir = 0
         self.left_pressed, self.right_pressed = False, False
         self.image = load_image('animation_sheet.png')
+        self.idle_state = Idle(self)
         self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
         self.idle_start_time = get_time()
