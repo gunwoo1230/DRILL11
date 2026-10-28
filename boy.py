@@ -1,6 +1,8 @@
 from pico2d import load_image, get_time, clamp, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT, SDLK_a
 from transitions import Machine
 
+SCREEN_WIDTH = 800
+
 RUN_SPEED = 5
 AUTO_RUN_SPEED = 15
 AUTO_RUN_SCALE = 2
@@ -66,7 +68,7 @@ class Run:
     def do(self):
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
-        boy.x = clamp(25, boy.x + boy.dir * RUN_SPEED, 800 - 25)
+        boy.x = clamp(25, boy.x + boy.dir * RUN_SPEED, SCREEN_WIDTH - 25)
 
     def draw(self):
         boy = self.boy
@@ -94,8 +96,8 @@ class AutoRun:
         boy.x += boy.dir * AUTO_RUN_SPEED
         # 커진 크기 기준으로 화면 끝 경계 계산
         margin = 25 * AUTO_RUN_SCALE
-        if boy.x > 800 - margin:
-            boy.x = 800 - margin
+        if boy.x > SCREEN_WIDTH - margin:
+            boy.x = SCREEN_WIDTH - margin
             boy.dir = boy.face_dir = -1
         elif boy.x < margin:
             boy.x = margin
