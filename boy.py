@@ -91,6 +91,11 @@ class Boy:
         self.idle_state = Idle(self)
         self.sleep_state = Sleep(self)
         self.run_state = Run(self)
+        self.state_objects = {
+            'IDLE': self.idle_state,
+            'SLEEP': self.sleep_state,
+            'RUN': self.run_state,
+        }
         self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
         self.idle_state.enter()
