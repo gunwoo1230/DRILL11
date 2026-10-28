@@ -90,7 +90,7 @@ class AutoRun:
 
 
 class Boy:
-    states = ['IDLE', 'SLEEP', 'RUN']
+    states = ['IDLE', 'SLEEP', 'RUN', 'AUTO_RUN']
     transitions = [
         {'trigger': 'time_out', 'source': 'IDLE', 'dest': 'SLEEP'},
         {'trigger': 'space_down', 'source': 'SLEEP', 'dest': 'IDLE'},
@@ -108,10 +108,12 @@ class Boy:
         self.idle_state = Idle(self)
         self.sleep_state = Sleep(self)
         self.run_state = Run(self)
+        self.auto_run_state = AutoRun(self)
         self.state_objects = {
             'IDLE': self.idle_state,
             'SLEEP': self.sleep_state,
             'RUN': self.run_state,
+            'AUTO_RUN': self.auto_run_state,
         }
         # 상태 전이 시 상태 객체의 enter/exit 이 자동으로 호출되도록 연결
         states = [{'name': name,
