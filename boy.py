@@ -77,7 +77,8 @@ class AutoRun:
         self.boy = boy
 
     def enter(self):
-        pass
+        # 바라보는 방향으로 자동 이동 시작
+        self.boy.dir = self.boy.face_dir
 
     def exit(self):
         pass
