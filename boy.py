@@ -24,6 +24,23 @@ class Idle:
             boy.image.clip_draw(boy.frame * 100, 200, 100, 100, boy.x, boy.y)
 
 
+class Sleep:
+    def __init__(self, boy):
+        self.boy = boy
+
+    def enter(self):
+        pass
+
+    def exit(self):
+        pass
+
+    def do(self):
+        pass
+
+    def draw(self):
+        pass
+
+
 class Boy:
     states = ['IDLE', 'SLEEP', 'RUN']
     transitions = [
@@ -41,6 +58,7 @@ class Boy:
         self.left_pressed, self.right_pressed = False, False
         self.image = load_image('animation_sheet.png')
         self.idle_state = Idle(self)
+        self.sleep_state = Sleep(self)
         self.machine = Machine(model=self, states=Boy.states, transitions=Boy.transitions,
                                initial='IDLE', ignore_invalid_triggers=True)
         self.idle_state.enter()
