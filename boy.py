@@ -96,6 +96,7 @@ class Boy:
         {'trigger': 'space_down', 'source': 'SLEEP', 'dest': 'IDLE'},
         {'trigger': 'run', 'source': ['IDLE', 'SLEEP'], 'dest': 'RUN'},
         {'trigger': 'stop', 'source': 'RUN', 'dest': 'IDLE'},
+        {'trigger': 'a_down', 'source': 'IDLE', 'dest': 'AUTO_RUN'},
     ]
 
     def __init__(self):
