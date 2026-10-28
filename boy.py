@@ -72,6 +72,23 @@ class Run:
             boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, boy.y)
 
 
+class AutoRun:
+    def __init__(self, boy):
+        self.boy = boy
+
+    def enter(self):
+        pass
+
+    def exit(self):
+        pass
+
+    def do(self):
+        pass
+
+    def draw(self):
+        pass
+
+
 class Boy:
     states = ['IDLE', 'SLEEP', 'RUN']
     transitions = [
