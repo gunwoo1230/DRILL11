@@ -38,7 +38,14 @@ class Sleep:
         pass
 
     def draw(self):
-        pass
+        boy = self.boy
+        # 바닥에 누운 모습: idle 이미지를 90도 회전해서 그림
+        if boy.face_dir == 1:
+            boy.image.clip_composite_draw(boy.frame * 100, 300, 100, 100,
+                                          3.141592 / 2, '', boy.x - 25, boy.y - 25, 100, 100)
+        else:
+            boy.image.clip_composite_draw(boy.frame * 100, 200, 100, 100,
+                                          -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
 
 
 class Boy:
@@ -93,13 +100,7 @@ class Boy:
         if self.state == 'IDLE':
             self.idle_state.draw()
         elif self.state == 'SLEEP':
-            # 바닥에 누운 모습: idle 이미지를 90도 회전해서 그림
-            if self.face_dir == 1:
-                self.image.clip_composite_draw(self.frame * 100, 300, 100, 100,
-                                               3.141592 / 2, '', self.x - 25, self.y - 25, 100, 100)
-            else:
-                self.image.clip_composite_draw(self.frame * 100, 200, 100, 100,
-                                               -3.141592 / 2, '', self.x + 25, self.y - 25, 100, 100)
+            self.sleep_state.draw()
         elif self.state == 'RUN':
             if self.face_dir == 1:
                 self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
