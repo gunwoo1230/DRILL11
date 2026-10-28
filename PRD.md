@@ -234,3 +234,32 @@ class Idle:
 - `AutoRun` 클래스가 `boy.py` 에 존재하고, AUTO_RUN 상태의 동작이 그 클래스 안에 구현되어 있다.
 - `state_diagram.png` 가 저장소에 포함되어 있다.
 - 6장의 계획대로 작은 단위의 커밋 기록이 **30개 이상** 남아 있다.
+
+## 8. 진행 결과
+
+### 8.1 구현 결과
+
+| # | 채점 항목 | 구현 위치 | 구현 |
+| --- | --- | --- | --- |
+| 1 | `a` 를 누르면 AUTO_RUN 상태로 이동 | `Boy.handle_event` → `a_down` 전이 (IDLE → AUTO_RUN) | ✅ |
+| 2 | 5초 이상 경과하면 IDLE 상태로 복귀 | `AutoRun.enter` 시작 시각 기록, `AutoRun.do` 에서 `time_out` (AUTO_RUN → IDLE) | ✅ |
+| 3 | AUTO_RUN 모드에서 속도 증가 | `AUTO_RUN_SPEED = 15` (RUN 5의 3배) | ✅ |
+| 4 | AUTO_RUN 모드에서 크기 2배 | `AUTO_RUN_SCALE = 2`, `AutoRun.draw` 에서 200×200, y +50 보정 | ✅ |
+| 5 | 좌우 끝에서 자동 방향 전환 | `AutoRun.do` — 경계 `50 ~ 750` 에서 `dir`·`face_dir` 반전 | ✅ |
+| 6 | 상태 다이어그램 | `state_diagram.png` | ✅ |
+| (추가) | 방향키 입력 시 RUN 전환 | `run` 전이 source 에 AUTO_RUN 추가 | ✅ |
+
+> 최종 실행 확인(`python main.py`)은 사용자가 직접 진행한다.
+
+### 8.2 계획과 달라진 점
+
+| 계획 | 실제 | 이유 |
+| --- | --- | --- |
+| 17 `states` 에 AUTO_RUN 추가 → 18 AutoRun 뼈대 | 17 AutoRun 뼈대 → 18 AUTO_RUN 상태 등록 | Phase B 이후 `states` 의 각 이름에 상태 객체가 있어야 해서 클래스를 먼저 만듦 |
+| 38 RUN 전환 후 방향 처리 수정 (필요 시) | 생략 | `handle_event` 가 `dir`·`face_dir` 을 정한 뒤 `run()` 을 호출하므로 수정할 문제가 없었음 |
+| 41 불필요한 import·코드 정리 | `refactor: 화면 너비를 상수로 정리` | 사용하지 않는 import 는 없었고, 반복되는 `800` 을 `SCREEN_WIDTH` 로 정리 |
+| (계획 외) | `chore: __pycache__ 무시하도록 .gitignore 추가` | 첫 리팩터링 커밋에 `.pyc` 가 섞여 들어가 추가 |
+
+### 8.3 커밋 수
+
+- 개발 커밋(PRD 초안부터 이 기록까지): **41개** (저장소 전체 43개, 기존 2개 포함)
