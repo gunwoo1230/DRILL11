@@ -120,17 +120,7 @@ class Boy:
                 self.stop()
 
     def update(self):
-        if self.state == 'IDLE':
-            self.idle_state.do()
-        elif self.state == 'SLEEP':
-            self.sleep_state.do()
-        elif self.state == 'RUN':
-            self.run_state.do()
+        self.state_objects[self.state].do()
 
     def draw(self):
-        if self.state == 'IDLE':
-            self.idle_state.draw()
-        elif self.state == 'SLEEP':
-            self.sleep_state.draw()
-        elif self.state == 'RUN':
-            self.run_state.draw()
+        self.state_objects[self.state].draw()
