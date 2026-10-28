@@ -86,6 +86,7 @@ class AutoRun:
     def do(self):
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
+        boy.x += boy.dir * 5
 
     def draw(self):
         boy = self.boy
