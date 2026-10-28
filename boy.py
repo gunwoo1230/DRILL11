@@ -3,6 +3,7 @@ from transitions import Machine
 
 RUN_SPEED = 5
 AUTO_RUN_SPEED = 15
+AUTO_RUN_SCALE = 2
 
 
 class Idle:
