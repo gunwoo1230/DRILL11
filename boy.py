@@ -2,7 +2,7 @@ from pico2d import load_image, get_time, clamp, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPA
 from transitions import Machine
 
 RUN_SPEED = 5
-AUTO_RUN_SPEED = 5
+AUTO_RUN_SPEED = 15
 
 
 class Idle:
