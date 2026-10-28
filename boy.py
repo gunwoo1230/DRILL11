@@ -91,11 +91,13 @@ class AutoRun:
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
         boy.x += boy.dir * AUTO_RUN_SPEED
-        if boy.x > 800 - 25:
-            boy.x = 800 - 25
+        # 커진 크기 기준으로 화면 끝 경계 계산
+        margin = 25 * AUTO_RUN_SCALE
+        if boy.x > 800 - margin:
+            boy.x = 800 - margin
             boy.dir = boy.face_dir = -1
-        elif boy.x < 25:
-            boy.x = 25
+        elif boy.x < margin:
+            boy.x = margin
             boy.dir = boy.face_dir = 1
 
     def draw(self):
