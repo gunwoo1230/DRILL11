@@ -87,6 +87,9 @@ class AutoRun:
         boy = self.boy
         boy.frame = (boy.frame + 1) % 8
         boy.x += boy.dir * 5
+        if boy.x > 800 - 25:
+            boy.x = 800 - 25
+            boy.dir = -1
 
     def draw(self):
         boy = self.boy
